@@ -1,7 +1,7 @@
 {
-	"name":"Light",
+	"name":"EOS-OSC",
 	"type":"OSC",
-	"path":"EOSOSC",
+	"path":"Software",
 	
 	"version":"1.0.0",
 	"description":"Mike's special module to control EOS Light Console through OSC via commands",
