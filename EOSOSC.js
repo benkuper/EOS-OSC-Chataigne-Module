@@ -106,3 +106,51 @@ function pointCallback(startID, endID, position, size, fade, color)
 		sendCommand(cmd+" "+colorCmd);
 	}
 }
+
+// Functions to read cuelist and cuenumber
+
+function oscEvent(adress, args) 
+{
+	// Register pattern with Wildcards for cueliste and cuenummer
+    local.register("/eos/out/*/cue/*/*", "cueCallback");
+	
+	// Register pattern with Wildcards for cueText
+	local.register("/eos/out/*/cue/text", "cueTextCallback");
+	
+	
+}
+
+function cueCallback(address, args) {
+    // Check if adresspattern matches
+    if (local.match(address, "/eos/out/*/cue/*/*")) {
+        // Splitte in parts
+        var addressParts = address.split("/");
+
+        // Die cueliste ist der 6. Teil (Index 5), da es "/eos/out/active/cue/{cueliste}/{cuenummer}" ist
+        var cueliste = addressParts[5];
+
+        // Die cuenummer ist der 7. Teil (Index 6)
+        var cuenummer = addressParts[6];
+
+        // Ausgabe der empfangenen Werte
+        if (addressParts[3] == "active") root.modules.eosOSC.values.activeCueNo.set(cuenummer);
+		if (addressParts[3] == "active") root.modules.eosOSC.values.activeCuelistNo.set(cueliste);
+		if (addressParts[3] == "pending") root.modules.eosOSC.values.pendingCueNo.set(cuenummer);
+		if (addressParts[3] == "pending") root.modules.eosOSC.values.pendingCuelistNo.set(cueliste);
+			
+		//DEBUG script.log("Pending cue: List " + cueliste + ", Cue " + cuenummer);
+	
+    }
+}
+
+function cueTextCallback(address, args) {
+    // Prüfen, ob das Addressmuster übereinstimmt
+    if (local.match(address, "/eos/out/*/cue/text")) {
+        // Splitte die Adresse in ihre Teile
+        var addressParts = address.split("/");
+        // Ausgabe der empfangenen Werte
+        if (addressParts[3] == "active") root.modules.eosOSC.values.activeCueName.set(args[0]);
+		if (addressParts[3] == "pending") root.modules.eosOSC.values.pendingCueName.set(args[0]);
+
+    }
+}
