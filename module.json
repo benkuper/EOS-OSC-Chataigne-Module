@@ -50,9 +50,26 @@
 		"EOSOSC.js"
 	],
 
-	"values":
-	{
-	},
+	"values": {
+		"ActiveCueNo":{
+			"type":"String",
+			},
+		"ActiveCuelistNo":{
+			"type":"String",
+			},
+		"PendingCueNo":{
+			"type":"String",
+			},
+		"PendingCuelistNo":{
+			"type":"String",
+			},
+		"ActiveCueName":{
+			"type":"String",
+			},
+		"PendingCueName":{
+			"type":"String",
+			}
+    },
 
 	"commands":
 	{
