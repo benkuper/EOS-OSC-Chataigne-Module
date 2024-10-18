@@ -3,7 +3,7 @@
 	"type":"OSC",
 	"path":"Software",
 	
-	"version":"1.0.0",
+	"version":"1.0.1",
 	"description":"Mike's special module to control EOS Light Console through OSC via commands",
 	"url":"https://github.com/benkuper/EOS-OSC-Chataigne-Module",
 	"downloadURL":"https://github.com/benkuper/EOS-OSC-Chataigne-Module/archive/master.zip",
