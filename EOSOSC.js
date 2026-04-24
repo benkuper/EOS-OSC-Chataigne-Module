@@ -197,15 +197,15 @@ function cueCallback(address, args) {
 
 			// The cue number is part 7 (index 6) for output "/eos/out/<active-pending>/cue/<list>/<cue>"
 			cueNumber = parseFloat(addressParts[6]);
-		}
 
-		// Output the received values
-		if (cueType == "active") {
-			local.values.activeCueNo.set(cueNumber);
-			local.values.activeCuelistNo.set(cuelist);
-		} else if (cueType == "pending") {
-			local.values.pendingCueNo.set(cueNumber);
-			local.values.pendingCuelistNo.set(cuelist);
+			// Output the received values
+			if (cueType == "active") {
+				local.values.activeCueNo.set(cueNumber);
+				local.values.activeCuelistNo.set(cuelist);
+			} else if (cueType == "pending") {
+				local.values.pendingCueNo.set(cueNumber);
+				local.values.pendingCuelistNo.set(cuelist);
+			}
 		}
 
 		// DEBUG
